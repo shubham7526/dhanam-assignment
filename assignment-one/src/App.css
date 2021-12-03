@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+}
+
+.division{
+  font-size: xx-large;
+  color: white;
+
+}
+
+.logo{
+  font-size: xx-large;
+  font-weight: 600;
+  color: saddlebrown;
+}
+
+.header{
+  background-color: burlywood;
+  height: 90px;
+  width: 100vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: fixed;
+  z-index: 2;
+}
+
+select{
+  height: 40px;                         
+  width: 172px;
+  margin-right: 20px;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.content{
+  padding: 75px;
+  position: relative;
+  top: 70px;
+  z-index: 1;
+}
+
+.select_date{
+  padding: 10px;
+  color: white;
+  background-color: coral;
+  border-radius: 0.5rem;
+}
+
+.select_date:hover{
+  cursor: pointer;
+}
+
+input{
+  border-radius: 0.5rem;
+  border-style: none;
+  padding: 5px;
+  background-color: peru;
+  color: white;
+}
+
