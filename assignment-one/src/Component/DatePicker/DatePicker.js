@@ -7,8 +7,7 @@ import "./DatePicker.css"
 const CustomDateRange = (props)=>{
 
     const { state, setState } = props;
-
-    
+   
     return (
         <div className="date_picker">
             <DateRangePicker

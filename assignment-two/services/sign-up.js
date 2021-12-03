@@ -23,8 +23,7 @@ const signUp = async (payload) => {
         to: email,
         subject: 'Welcome',
         text: 'Hi, Welcome to Dhavan'
-    };
-  
+    }; 
     
     mailTransporter.sendMail(mailDetails, function(err, data) {
         console.log(data)

@@ -20,15 +20,10 @@ const App = ()=>{
         key: 'selection'
       }
     ]);
-
     const {startDate, endDate} = state[0];
-
-    console.log(typeof startDate);
-    console.log("ed", endDate);
 
     const getEventDetails = async()=>{   
       try{
-
         const {data} = await axios({
           url: "https://www.gov.uk/bank-holidays.json" 
         });
@@ -36,7 +31,6 @@ const App = ()=>{
         const {division:divOne, events:eventOne} = engWal;
         const {division:divTwo, events:eventTwo} = scotland;
         const {division:divThree, events:eventThree} = northIre;
-
      
         if(division === divOne){
           const filterEvent = eventOne.filter(event => {
@@ -62,13 +56,11 @@ const App = ()=>{
     }
 
     
-    const onSubmit = async(data, evt) => {
-      
+    const onSubmit = async(data, evt) => {      
       const {division} = data;
       setDivision(division);
       getEventDetails();
       setShowDate(false);
-
     };
 
     return (
@@ -86,8 +78,7 @@ const App = ()=>{
               </select>
               <div className="d-inline-block pe-4" onClick={()=>setShowDate(true)}>
                 {showDate ?<DatePicker state={state} setState={setState}  />: <span className="select_date"> Select Date</span>}
-              </div>
-              
+              </div>              
               <input type="submit" />
             </form>
           </div>
