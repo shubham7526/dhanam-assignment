@@ -7,7 +7,9 @@ Create a webpage with filter options to select different dates(yesterday, last w
 
 
 To run this file please Follow below process-
+
     npm i
+    
     npm run start
     
     
@@ -16,9 +18,13 @@ Assignment 2:
 Create a Node, Mongo, express server. Create a user model. Create a route to sign up the user and trigger a welcome mail.
 Prerequisite: Postgres Database 
 
+
 To run this file please Follow below process-
+
     Please enter your credential email details in "config.json" file for triggering a welcome mail to registered user at the time of sign up.
+    
     npm i
+    
     npm run start
 
  
