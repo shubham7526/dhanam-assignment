@@ -4,7 +4,7 @@ const signUp = async(req, res)=>{
 
     try{
         const {body} = req;
-        const {doc} = await  SignUpService.signUp(body);
+        const {doc} = await SignUpService.signUp(body);
         
         if(doc) {
             const {message, publicId} = doc;
