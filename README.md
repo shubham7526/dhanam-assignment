@@ -16,6 +16,7 @@ To run this file please Follow below process-
 Assignment 2: 
 
 Create a Node, Mongo, express server. Create a user model. Create a route to sign up the user and trigger a welcome mail.
+
 Prerequisite: Postgres Database 
 
 
