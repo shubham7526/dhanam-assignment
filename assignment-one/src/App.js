@@ -24,10 +24,11 @@ const App = ()=>{
     const {startDate, endDate} = state[0];
 
     const getEventDetails = async()=>{   
-      try{
+      try {
         const {data} = await axios({
           url: "https://www.gov.uk/bank-holidays.json" 
         });
+
         const {"england-and-wales": engWal, scotland, 'northern-ireland': northIre} = data;
         const {division:divOne, events:eventOne} = engWal;
         const {division:divTwo, events:eventTwo} = scotland;
@@ -40,6 +41,7 @@ const App = ()=>{
           setEvent(filterEvent);
           setFilterEvent(filterEvent);
         }
+
         if(division === divTwo){
           const filterEvent = eventTwo.filter(event => {
             return (new Date(event.date) >= startDate.getTime() && new Date(event.date) <= endDate.getTime())
@@ -47,6 +49,7 @@ const App = ()=>{
           setEvent(filterEvent);
           setFilterEvent(filterEvent);
         }
+
         if(division === divThree){
           const filterEvent = eventThree.filter(event => {
             return (new Date(event.date) >= startDate.getTime() && new Date(event.date) <= endDate.getTime())
@@ -66,8 +69,7 @@ const App = ()=>{
       })
       setFilterEvent(filterEvent);
     }
-
-    
+ 
     const onSubmit = async(data, evt) => {      
       const {division } = data;
       setDivision(division);
@@ -76,7 +78,6 @@ const App = ()=>{
     };
 
     return (
-      <div>
         <div>
           <div className="header d-flex justify-content-between align-items-center">
             <div className="logo">Event Details</div>
@@ -99,7 +100,6 @@ const App = ()=>{
             {filterEvent.map((data, idx)=> <Event key={idx} data={data}/>)}
           </div>          
         </div>
-      </div>
     )
 }
 
