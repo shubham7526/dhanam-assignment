@@ -10,8 +10,9 @@ import './App.css';
 const App = ()=>{
       
     const [event, setEvent] = useState([]);
+    const [filterEvent, setFilterEvent] = useState([]);
     const [division, setDivision] = useState("");
-    const { register, handleSubmit } = useForm();
+    const {register, handleSubmit} = useForm();
     const [showDate, setShowDate] = useState(false);
     const [state, setState] = useState([
       {
@@ -37,27 +38,38 @@ const App = ()=>{
             return (new Date(event.date) >= startDate.getTime() && new Date(event.date) <= endDate.getTime())
           })
           setEvent(filterEvent);
+          setFilterEvent(filterEvent);
         }
         if(division === divTwo){
           const filterEvent = eventTwo.filter(event => {
             return (new Date(event.date) >= startDate.getTime() && new Date(event.date) <= endDate.getTime())
           })
-          setEvent(filterEvent)
+          setEvent(filterEvent);
+          setFilterEvent(filterEvent);
         }
         if(division === divThree){
           const filterEvent = eventThree.filter(event => {
             return (new Date(event.date) >= startDate.getTime() && new Date(event.date) <= endDate.getTime())
           })
-          setEvent(filterEvent)
+          setEvent(filterEvent);
+          setFilterEvent(filterEvent);
         }        
       }catch(err){
         console.log(err);
       }   
     }
 
+    const handleChange = (evt)=>{
+      const {value} = evt.target;
+      const filterEvent = event.filter(data => {
+        return data.title.toLowerCase().includes(value.toLowerCase());
+      })
+      setFilterEvent(filterEvent);
+    }
+
     
     const onSubmit = async(data, evt) => {      
-      const {division} = data;
+      const {division } = data;
       setDivision(division);
       getEventDetails();
       setShowDate(false);
@@ -70,6 +82,7 @@ const App = ()=>{
             <div className="logo">Event Details</div>
             <div className="division">{division.toUpperCase()}</div>
             <form onSubmit={handleSubmit(onSubmit)} method="post">
+              <input className="search-box me-3" type="text" onChange = {handleChange} placeholder="Search"/>
               <select {...register("division")}>
                 <option value="">Select Division...</option>
                 <option value="england-and-wales">england-and-wales</option>
@@ -77,13 +90,13 @@ const App = ()=>{
                 <option value="northern-ireland">northern-ireland</option>
               </select>
               <div className="d-inline-block pe-4" onClick={()=>setShowDate(true)}>
-                {showDate ?<DatePicker state={state} setState={setState}  />: <span className="select_date"> Select Date</span>}
+                {showDate ?<DatePicker state={state} setState={setState}/>: <span className="select_date"> Select Date</span>}
               </div>              
               <input type="submit" />
             </form>
           </div>
           <div className="content d-flex flex-wrap">
-            {event.map((data, idx)=> <Event key={idx} data={data}/>)}
+            {filterEvent.map((data, idx)=> <Event key={idx} data={data}/>)}
           </div>          
         </div>
       </div>
