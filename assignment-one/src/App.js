@@ -77,8 +77,7 @@ const App = ()=>{
       setShowDate(false);
     };
 
-    return (
-        <div>
+    return (<div>
           <div className="header d-flex justify-content-between align-items-center">
             <div className="logo">Event Details</div>
             <div className="division">{division.toUpperCase()}</div>
